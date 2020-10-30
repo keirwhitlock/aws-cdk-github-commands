@@ -1,5 +1,5 @@
-name: 'AWS CDK GitHub Actions'
-description: 'Runs AWS-CDK via GitHub Actions.'
+name: 'AWS CDK Actions'
+description: 'Runs AWS-CDK cli commands via GitHub Actions.'
 author: 'youyo <1003ni2@gmail.com>'
 branding:
   icon: 'terminal'
