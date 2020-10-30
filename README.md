@@ -19,7 +19,7 @@ jobs:
     steps:
 
       - name: cdk diff
-        uses: youyo/aws-cdk-github-actions@v1
+        uses: jd-carroll/aws-cdk-cli-commands@v1.10.1
         with:
           cdk_subcommand: 'diff'
           actions_comment: true
@@ -29,7 +29,7 @@ jobs:
           AWS_DEFAULT_REGION: 'ap-northeast-1'
 
       - name: cdk deploy
-        uses: youyo/aws-cdk-github-actions@v1
+        uses: jd-carroll/aws-cdk-cli-commands@v1.10.1
         with:
           cdk_subcommand: 'deploy'
           cdk_stack: 'stack1'
@@ -41,7 +41,7 @@ jobs:
           AWS_DEFAULT_REGION: 'ap-northeast-1'
 
       - name: cdk synth
-        uses: youyo/aws-cdk-github-actions@v1
+        uses: jd-carroll/aws-cdk-cli-commands@v1.10.1
         with:
           cdk_subcommand: 'synth'
           cdk_version: '1.16.2'
@@ -76,7 +76,7 @@ jobs:
           AWS_DEFAULT_REGION: 'ap-northeast-1'
 
       - name: cdk diff
-        uses: youyo/aws-cdk-github-actions@v1
+        uses: jd-carroll/aws-cdk-cli-commands@v1.10.1
         with:
           cdk_subcommand: 'diff'
 ```
@@ -109,3 +109,5 @@ Recommended to get `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` from secrets.
 ## Author
 
 [youyo](https://github.com/youyo)
+[jd-carroll](https://github.com/jd-carroll)
+
