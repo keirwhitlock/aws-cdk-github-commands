@@ -43,6 +43,23 @@ function installAwsCdk(){
 	fi
 }
 
+# TODO: Get script to read the cdk.json file, and attempt to install all
+# the plugins listed in the plugin list.
+function installPlugins(){
+	echo "Install 'npm install -g cdk-assume-role-credential-plugin'"
+	if [ "${INPUT_DEBUG_LOG}" == "true" ]; then
+		npm install -g cdk-assume-role-credential-plugin
+	else
+		npm install -g cdk-assume-role-credential-plugin >/dev/null 2>&1
+	fi
+
+	if [ "${?}" -ne 0 ]; then
+		echo "Failed to install aws-cdk ${INPUT_CDK_VERSION}"
+	else
+		echo "Successful install aws-cdk ${INPUT_CDK_VERSION}"
+	fi
+}
+
 function installPipRequirements(){
 	if [ -e "requirements.txt" ]; then
 		echo "Install requirements.txt"
@@ -96,6 +113,7 @@ function main(){
 	cd ${GITHUB_WORKSPACE}/${INPUT_WORKING_DIR}
 	installTypescript
 	installAwsCdk
+	installPlugins
 	installPipRequirements
 	runCdk ${INPUT_CDK_ARGS}
 }
