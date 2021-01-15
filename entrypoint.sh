@@ -54,9 +54,9 @@ function installPlugins(){
 	fi
 
 	if [ "${?}" -ne 0 ]; then
-		echo "Failed to install aws-cdk ${INPUT_CDK_VERSION}"
+		echo "Failed to install cdk-assume-role-credential-plugin ${INPUT_CDK_VERSION}"
 	else
-		echo "Successful install aws-cdk ${INPUT_CDK_VERSION}"
+		echo "Successful install cdk-assume-role-credential-plugin ${INPUT_CDK_VERSION}"
 	fi
 }
 
