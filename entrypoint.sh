@@ -78,6 +78,7 @@ function installPipRequirements(){
 }
 
 function runCdk(){
+	exitCode=0
 	echo "Run cdk ${INPUT_CDK_SUBCOMMAND} ${*} \"${INPUT_CDK_STACK}\""
 	output=$(cdk ${INPUT_CDK_SUBCOMMAND} ${*} "${INPUT_CDK_STACK}" 2>&1)
 	exitCode=${?}
@@ -106,6 +107,8 @@ ${output}
 
 		echo "${payload}" | curl -s -S -H "Authorization: token ${GITHUB_TOKEN}" --header "Content-Type: application/json" --data @- "${commentsURL}" > /dev/null
 	fi
+
+	exit $exitCode
 }
 
 function main(){
