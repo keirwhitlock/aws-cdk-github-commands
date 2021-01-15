@@ -15,7 +15,7 @@ function installTypescript(){
 }
 
 function installAwsCdk(){
-	figlet "Install aws-cdk ${INPUT_CDK_VERSION}"
+	echo "Install aws-cdk ${INPUT_CDK_VERSION}"
 	if [ "${INPUT_CDK_VERSION}" == "latest" ]; then
 		if [ "${INPUT_DEBUG_LOG}" == "true" ]; then
 			npm install -g aws-cdk
@@ -46,7 +46,7 @@ function installAwsCdk(){
 # TODO: Get script to read the cdk.json file, and attempt to install all
 # the plugins listed in the plugin list.
 function installPlugins(){
-	figlet "Install 'cdk-assume-role-credential-plugin'"
+	echo "Install 'cdk-assume-role-credential-plugin'"
 	if [ "${INPUT_DEBUG_LOG}" == "true" ]; then
 		npm install -g cdk-assume-role-credential-plugin
 	else
@@ -62,7 +62,7 @@ function installPlugins(){
 
 function installPipRequirements(){
 	if [ -e "requirements.txt" ]; then
-		figlet "Install requirements"
+		echo "Install requirements.txt"
 		if [ "${INPUT_DEBUG_LOG}" == "true" ]; then
 			pip install -r requirements.txt
 		else
@@ -79,8 +79,7 @@ function installPipRequirements(){
 
 function runCdk(){
 	exitCode=0
-	figlet "Run cdk ${INPUT_CDK_SUBCOMMAND}"
-	echo "cdk ${INPUT_CDK_SUBCOMMAND} ${*} \"${INPUT_CDK_STACK}\""
+	echo "Run cdk ${INPUT_CDK_SUBCOMMAND} ${*} \"${INPUT_CDK_STACK}\""
 	output=$(cdk ${INPUT_CDK_SUBCOMMAND} ${*} "${INPUT_CDK_STACK}" 2>&1)
 	exitCode=${?}
 	echo ::set-output name=status_code::${exitCode}
