@@ -79,6 +79,10 @@ function installPipRequirements(){
 
 function runCdk(){
 	exitCode=0
+	
+	echo "Waiting for CloudFormation stack \"${INPUT_CDK_STACK}\" to become available."
+	aws cloudformation wait stack-update-complete --stack-name ${INPUT_CDK_STACK}
+
 	echo "Run cdk ${INPUT_CDK_SUBCOMMAND} ${*} \"${INPUT_CDK_STACK}\""
 	output=$(cdk ${INPUT_CDK_SUBCOMMAND} ${*} "${INPUT_CDK_STACK}" 2>&1)
 	exitCode=${?}
